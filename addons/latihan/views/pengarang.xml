@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- pengarang tree view -->
+        <record id="pengarang_view_tree" model="ir.ui.view">
+            <field name="name">pengarang.view.tree</field>
+            <field name="model">pengarang</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="jenis_klm"/>
+                    <field name="tgl_lahir"/>
+                    <field name="tmpt_lahir"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- pengarang form view -->
+        <record id="pengarang_view_form" model="ir.ui.view">
+            <field name="name">pengarang.view.form</field>
+            <field name="model">pengarang</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <!-- Add your fields here -->
+                            <field name="name"/>
+                            <field name="jenis_klm"/>
+                            <field name="tgl_lahir"/>
+                            <field name="tmpt_lahir"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- pengarang action window -->
+        <record id="pengarang_action" model="ir.actions.act_window">
+            <field name="name">pengarang.action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">pengarang</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                </p>
+            </field>
+        </record>
+
+        <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+        <menuitem id="latihan_menu_root" name="Latihan" sequence="20"/>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="master_menu_categ" name="Master" parent="latihan_menu_root" sequence="20"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="pengarang_menu_act" name="Pengarang" parent="master_menu_categ" action="pengarang_action" sequence="20"/>
+    </data>
+</odoo>

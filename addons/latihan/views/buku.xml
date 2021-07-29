@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <data>
+        <!-- Add you code here -->
+        <!-- buku tree view -->
+        <record id="buku_view_tree" model="ir.ui.view">
+            <field name="name">buku.view.tree</field>
+            <field name="model">buku</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <!-- Add your fields here -->
+                    <field name="name"/>
+                    <field name="isbn"/>
+                    <field name="jumlah"/>
+                    <field name="pengarang_id"/>
+                    <field name="kategori_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- buku form view -->
+        <record id="buku_view_form" model="ir.ui.view">
+            <field name="name">buku.view.form</field>
+            <field name="model">buku</field>
+            <field name="arch" type="xml">
+                <form string="">
+                    <sheet>
+                        <group>
+                            <group string = "Informasi Utama">
+                                <!-- Add your fields here -->
+                                <field name="name"/>
+                                <field name="isbn"/>
+                                <field name="jumlah"/>
+                            </group>
+                                
+                            <group string = "Informasi Tambahan">
+                                <field name="keterangan"/>
+                                <field name="pengarang_id"/>
+                            </group>
+                        </group>
+                        <group string = "Kategori Buku">
+                            <field name="kategori_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- buku action window -->
+        <record id="buku_action" model="ir.actions.act_window">
+            <field name="name">buku.action</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">buku</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_type">form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p><p>
+                    <!-- More details about what a user can do with this object will be OK --> 
+                </p>
+            </field>
+        </record>
+        
+        <!-- This Menu Item will appear in the Upper bar, that's why It needs NO parent or action -->
+        <menuitem id="latihan_menu_root" name="Latihan" sequence="10"/>
+        <!-- This Menu Item Must have a parent -->
+        <menuitem id="master_menu_categ" name="Master" parent="latihan_menu_root" sequence="10"/>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="buku_menu_act" name="Buku" parent="master_menu_categ" action="buku_action" sequence="10"/>
+    </data>
+</odoo>
